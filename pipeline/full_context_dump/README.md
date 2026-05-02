@@ -1,10 +1,49 @@
 # Full-Context Dump
 
-## What this method does
+## What this architecture means
 
-Full-Context Dump extracts text from the PDF with `pypdf`, concatenates the entire document into one prompt, and asks the model to answer each eval question directly. It is the control method for this repo.
+Full-Context Dump is the simplest control architecture: extract all readable text from the PDF, concatenate it into one large context, and ask the model to answer each evaluation question directly from that full text.
 
-This method has no retrieval index, no chunk ranking, and no parent expansion. It is useful as a baseline because failures are easy to interpret: if the answer is wrong, the model either lost the relevant context, misread table text, or hallucinated from a long prompt.
+It is intentionally not optimized. There is no retrieval index, no chunk ranking, and no parent expansion. That makes it useful as a baseline: it answers the question, "What happens if I give the model everything and hope it finds the right evidence?"
+
+Use this method when you want a sanity check before building a retrieval pipeline. If Full-Context Dump performs well, your PDF may be short, mostly prose, and structurally easy. If it performs poorly, the failure often points to long-context degradation, table extraction issues, or unsupported citation grounding.
+
+## How to try this with your own PDF
+
+1. Put your PDF in the repo, usually under `pdfs/`:
+
+```bash
+mkdir -p pdfs
+cp /path/to/your-document.pdf pdfs/my_document.pdf
+```
+
+2. Create a config file under `configs/`, for example `configs/my_document.yaml`:
+
+```yaml
+pdf_path: pdfs/my_document.pdf
+eval_path: eval/ground_truth.json
+output_dir: output
+run_name: full_context_dump_my_document
+openai_model: gpt-5.5
+```
+
+3. Update `eval/ground_truth.json` with questions that matter for your PDF. Keep the questions topic-specific and include expected answers, pages, and quotes when you know them. For early exploration, start with 5-10 questions: direct lookup, table lookup, cross-reference, and negative/refusal cases.
+
+4. Run the method:
+
+```bash
+python3 pipeline/full_context_dump/run.py \
+  --config configs/my_document.yaml \
+  --run-name full_context_dump_my_document
+```
+
+5. Review the output:
+
+```bash
+output/results_full_context_dump_my_document.json
+```
+
+6. Interpret results carefully. A good score here does not prove the architecture is scalable. A bad score is still useful because it tells you that full-context prompting is not enough for your document.
 
 ## Files
 
@@ -17,7 +56,7 @@ Shared repo files used by this method:
 - `pipeline/util.py`
 - `eval/ground_truth.json`
 
-## How to run
+## How to run the included budget example
 
 From repo root:
 
@@ -27,10 +66,9 @@ python3 pipeline/full_context_dump/run.py \
   --run-name full_context_dump_2026
 ```
 
-For another PDF, put it in `pdfs/`, update or create a config file, and run with a new `--run-name`.
-
 ## Known limitations from this experiment
 
-- It answered negative questions instead of refusing.
-- It frequently missed table values when the question entity and number were separated.
-- It has poor auditability because the retrieved evidence is just whatever the model selected from a large prompt.
+- It frequently misses or misreads table values when entity names and numbers are separated.
+- It has weak auditability because there is no explicit retrieval trace.
+- It can over-answer when the correct behavior is refusal.
+- It becomes expensive or impossible when the PDF text exceeds the model context window.
