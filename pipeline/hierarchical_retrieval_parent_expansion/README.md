@@ -21,19 +21,19 @@ In these cases, entity names and explanatory prose were close to, but not always
 
 ```mermaid
 flowchart TD
-  A[Input PDF] --> B[Parser\nparse.py / pypdf layout text]
-  B --> C[Page Objects\npage text + ministry + demand + section metadata]
-  C --> D[Chunker\nchunk.py / ~900-token small chunks]
-  D --> E[Parent Metadata\nparent_section_id = ministry + demand + nearest scheme/section]
-  D --> F[Index\nBM25 + local TF-IDF dense surrogate]
-  F --> G[Small-Chunk Retrieval\nTOP_K=18, RERANK_K=8]
-  G --> H[Parent Expansion\nfetch chunks/pages sharing parent_section_id\nplus nearby sibling pages]
-  H --> I[Expanded Context\ntypically 1-3 pages around the hit]
-  I --> J[Generation\nforced citation schema]
-  J --> K{Grounded?}
-  K -- yes --> L[Answer claims\n{answer, page, quote}]
-  K -- no --> M[Refusal\nrefusal_reason]
-  L --> N[Eval JSON]
+  A["Input PDF"] --> B["Parse PDF<br/>pipeline/parse.py<br/>pypdf layout text"]
+  B --> C["Page objects<br/>page text, ministry, demand, section metadata"]
+  C --> D["Small chunks<br/>pipeline/chunk.py<br/>about 900 tokens each"]
+  D --> E["Parent metadata<br/>parent_section_id from ministry, demand, and nearest scheme heading"]
+  D --> F["Hybrid index<br/>BM25 plus local TF-IDF dense surrogate"]
+  F --> G["Small-chunk retrieval<br/>TOP_K = 18<br/>RERANK_K = 8"]
+  G --> H["Parent expansion<br/>collect chunks with same parent_section_id<br/>include nearby sibling pages"]
+  H --> I["Expanded evidence context<br/>scheme prose plus neighboring allocation table rows"]
+  I --> J["Schema-targeted extraction<br/>forced citations required"]
+  J --> K{"Grounded quote found?"}
+  K -- "yes" --> L["Answer claims<br/>answer, page, quote"]
+  K -- "no" --> M["Refusal<br/>refusal_reason"]
+  L --> N["Eval JSON"]
   M --> N
 ```
 
