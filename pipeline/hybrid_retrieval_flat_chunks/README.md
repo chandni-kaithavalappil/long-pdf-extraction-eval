@@ -10,12 +10,16 @@ This method retrieves and generates from flat chunks. It does not expand retriev
 
 ```mermaid
 flowchart TD
-  A[PDF] --> B[parse.py\npypdf layout text]
-  B --> C[chunk.py\n~900-token chunks + metadata]
-  C --> D[index.py\nBM25 + TF-IDF]
-  D --> E[retrieve.py\ntop-k flat chunks + rerank]
-  E --> F[extract.py\nforced {answer,page,quote}]
-  F --> G[eval output JSON]
+  A["Input PDF"] --> B["Parse PDF<br/>pipeline/parse.py<br/>pypdf layout text"]
+  B --> C["Flat chunks<br/>pipeline/chunk.py<br/>about 900 tokens plus metadata"]
+  C --> D["Hybrid index<br/>pipeline/index.py<br/>BM25 plus TF-IDF"]
+  D --> E["Flat-chunk retrieval<br/>retrieve.py<br/>top-k chunks plus rerank"]
+  E --> F["Schema-targeted extraction<br/>extract.py<br/>citations required"]
+  F --> G{"Grounded quote found?"}
+  G -- "yes" --> H["Answer claims<br/>answer, page, quote"]
+  G -- "no" --> I["Refusal<br/>refusal_reason"]
+  H --> J["Eval output JSON"]
+  I --> J
 ```
 
 ## Files
