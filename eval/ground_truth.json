@@ -1,0 +1,102 @@
+[
+  {
+    "id": "Q1",
+    "question": "What is the BE 2026-27 allocation for VB-G RAM G (Viksit Bharat-Guarantee for Rozgar and Ajeevika Mission (Gramin))?",
+    "expected_answer": "Rs. 95,692.31 crore",
+    "expected_page": 296,
+    "expected_quote": "7.  Viksit Bharat-Guarantee for Rozgar and Ajeevika Mission (Gramin)-VB-G RAM G Scheme ... ... ... ... ... ... ... ... ... 95692.31 ... 95692.31",
+    "category": "lookup",
+    "is_negative": false,
+    "notes": "Demand No. 87, Department of Rural Development. Printed page 289. Question reworded from 'VB-GRAM-G' to 'VB-G RAM G' to match the PDF's exact spacing."
+  },
+  {
+    "id": "Q2",
+    "question": "What is the BE 2026-27 allocation for PMAY-Urban (PMAY-Urban & PMAY-Urban 2.0)?",
+    "expected_answer": "Rs. 18,625.05 crore (Total: Revenue 18624.45 + Capital 0.60)",
+    "expected_page": 212,
+    "expected_quote": "Total- PMAY-Urban & PMAY-Urban 2.0 5815.43 ... 5815.43 19794.00 ... 19794.00 7499.40 0.60 7500.00 18624.45 0.60 18625.05",
+    "category": "lookup",
+    "is_negative": false,
+    "notes": "Demand No. 65, Ministry of Housing and Urban Affairs. Printed page 204. The 17.05 sub-line 'Interest Payment against loan raised through EBR' (1772.00) is included in this Rs. 18,625.05 crore total."
+  },
+  {
+    "id": "Q3",
+    "question": "What is the loan limit under the Modified Interest Subvention Scheme (MISS)?",
+    "expected_answer": "Rs. 3 lakh (short term crop loans)",
+    "expected_page": 12,
+    "expected_quote": "5. Modified Interest Subvention Scheme (MISS): MISS provides concessional short term agri-loans to the farmers practicing crop husbandry and other allied activities like animal husbandry, dairying and fisheries. It is available to farmers availing short term crop loans up to Rs. 3 lakh at an interest rate of 7% per annum for one year. Additional 3% subvention is also given to the farmers for prompt and timely repayment of loans thus reducing the effective rate of interest to 4% per annum.",
+    "category": "lookup_prose",
+    "is_negative": false,
+    "notes": "ORIGINAL QUESTION REWORDED. The original asked about 'KCC' (Kisan Credit Card), but the PDF text never uses 'KCC' or 'Kisan Credit Card' anywhere. The PDF describes MISS as covering 'short term crop loans up to Rs. 3 lakh' without referencing KCC. Demand No. 1, Department of Agriculture and Farmers Welfare. Printed page 4."
+  },
+  {
+    "id": "Q4",
+    "question": "What is the BE 2026-27 allocation for DAJGUA (Dharti Aaba Janjatiya Gram Utkarsh Abhiyan) under the Ministry of Tribal Affairs, and how does it compare to RE 2025-26?",
+    "expected_answer": "BE 2026-27: Rs. 2,013.46 crore. RE 2025-26: Rs. 500.00 crore. Increase of Rs. 1,513.46 crore (approximately 4x or +303%).",
+    "expected_page": 338,
+    "expected_quote": "6.08 Dharti Aaba Janjatiya Gram Utkarsh Abhiyan (DAJGUA) 477.68 ... 477.68 2000.00 ... 2000.00 500.00 ... 500.00 2013.46 ... 2013.46",
+    "category": "cross_reference",
+    "is_negative": false,
+    "notes": "Demand No. 100, Ministry of Tribal Affairs (sub-component 6.08 under PM Vanbandhu Kalyan Yojna). Printed page 330. DAJGUA also appears as sub-line items in other ministries (e.g., Health & Family Welfare line 41.03 for Rs. 445.07 crore in BE 2026-27); the Tribal Affairs entry is the eponymous scheme line. The PDF does not provide a consolidated DAJGUA total across ministries."
+  },
+  {
+    "id": "Q5",
+    "question": "What is the Pradhan Mantri Viksit Bharat Rozgar Yojana (PMVBRY) — what does it do, and what is its BE 2026-27 allocation?",
+    "expected_answer": "PMVBRY is the renamed New Employment Generation Scheme. It supports employment generation across the country by formalizing the workforce, incentivizing job creation, and strengthening social security, with benefits available for jobs created between August 1, 2025 and July 31, 2027. BE 2026-27 allocation: Rs. 20,082.70 crore.",
+    "expected_page": 233,
+    "expected_quote": "20. Pradhan Mantri Viksit Bharat Rozgar Yojana: Erstwhile New Employment Generation Scheme has been renamed as Pradhan Mantri Viksit Bharat Rozgar Yojana, a scheme to support employment generation across the country. The objective is to formalize workforce, incentivize job creation and strengthen social security, with benefits available for jobs created between August 1, 2025 and July 31, 2027.",
+    "category": "definition_plus_number",
+    "is_negative": false,
+    "notes": "Demand No. 64, Ministry of Labour and Employment. Allocation table on PDF page 232 (item 20); description on PDF page 233. Printed pages 224-225."
+  },
+  {
+    "id": "Q6",
+    "question": "What is the BE 2026-27 allocation for the Footwear, Leather and Accessories Development Programme (FLADP), and what is the scheme's stated objective?",
+    "expected_answer": "BE 2026-27 allocation: Rs. 300.00 crore. The scheme aims at development of infrastructure for the leather and footwear sector to address environmental concerns specific to this sector as well as to facilitate additional investments, employment generation and increase in production.",
+    "expected_page": 49,
+    "expected_quote": "4. Footwear, Leather and Accessories Development Programme (FLADP) 282.59 ... 282.59 350.00 ... 350.00 220.00 ... 220.00 300.00 ... 300.00",
+    "category": "definition_plus_number",
+    "is_negative": false,
+    "notes": "ORIGINAL QUESTION REPLACED. The original asked about a 'Footwear and Leather focus product scheme' with employment target, turnover target, and which states it focuses on. None of those specifics (employment target, turnover target, focus states) appear in the PDF — those are typically Budget Speech or DPIIT press release details, not Notes on Demands for Grants content. The PDF contains two related schemes: FLADP (item 4, allocation Rs. 300 cr) and PLI Scheme for Footwear and Leather Sector (item 17, allocation Rs. 0.01 cr token), neither with the specifics requested. Replaced with an answerable question about FLADP. Demand No. 11, Department for Promotion of Industry and Internal Trade. Printed page 41 for table; description on printed page 42."
+  },
+  {
+    "id": "Q7",
+    "question": "What is the BE 2026-27 allocation for the National Social Assistance Programme (NSAP) under the Ministry of Rural Development, and what are its component schemes?",
+    "expected_answer": "Total NSAP BE 2026-27: Rs. 9,671.00 crore. Components: IGNOAPS Rs. 6,904.90 cr; National Family Benefit Scheme Rs. 400.00 cr; IGNWPS Rs. 2,026.99 cr; IGNDPS Rs. 290.00 cr; Annapurna Scheme Rs. 10.00 cr; Administrative Expenditure Rs. 39.11 cr.",
+    "expected_page": 296,
+    "expected_quote": "Total- National Social Assistance Progamme 9652.01 ... 9652.01 9652.00 ... 9652.00 9197.10 ... 9197.10 9671.00 ... 9671.00",
+    "category": "aggregation",
+    "is_negative": false,
+    "notes": "ORIGINAL QUESTION REPLACED. The original asked about the 'Grameen Credit Score' — who develops it, target population, allocation. The phrase 'Grameen Credit Score' does not appear anywhere in the PDF (verified via exhaustive grep for 'Grameen Credit', 'credit score', and similar variants — zero matches). It is a Budget Speech / RBI announcement item, not a Notes on Demands for Grants line. Replaced with an answerable hard-aggregation question about NSAP and its components. Demand No. 87, Department of Rural Development. Printed pages 288-289."
+  },
+  {
+    "id": "Q8",
+    "question": "List all schemes under the Ministry of Rural Development (Department of Rural Development, Demand No. 87) with BE 2026-27 allocation greater than Rs. 10,000 crore.",
+    "expected_answer": "Five schemes exceed Rs. 10,000 crore in BE 2026-27: (1) Viksit Bharat-Guarantee for Rozgar and Ajeevika Mission (Gramin) [VB-G RAM G] - Rs. 95,692.31 crore; (2) Pradhan Mantri Awaas Yojana-Gramin [PMAY-G] - Rs. 54,916.70 crore (total); (3) MGNREGA - Rs. 30,000.00 crore (Total-Mahatma Gandhi National Rural Employment Guarantee Program); (4) Deendayal Antyodaya Yojana-National Rural Livelihoods Mission [DAY-NRLM] - Rs. 19,200.00 crore (total); (5) Pradhan Mantri Gram Sadak Yojna [PMGSY] - Rs. 19,000.00 crore (Net). NSAP at Rs. 9,671.00 crore falls just below the Rs. 10,000 crore threshold and is excluded.",
+    "expected_page": 296,
+    "expected_quote": "7. Viksit Bharat-Guarantee for Rozgar and Ajeevika Mission (Gramin)-VB-G RAM G Scheme: 95692.31; Total-Mahatma Gandhi National Rural Employment Guarantee Program: 30000.00; Pradhan Mantri Gram Sadak Yojna Net: 19000.00; Total- Deendayal Antyodaya Yojana-National Rural Livelihoods Mission (DAY-NRLM): 19200.00; Total- Pradhan Mantri Awaas Yojana-Gramin (PMAY-G): 54916.70",
+    "category": "aggregation",
+    "is_negative": false,
+    "notes": "Demand No. 87, Department of Rural Development. Data spans PDF pages 295-297 (printed pages 287-289). Quote concatenates the relevant lines — the data is not contiguous in a single line of the PDF. The Department of Land Resources (Demand No. 88, the other department under MoRD) has total net allocation of only Rs. 2,654.33 crore, so no schemes from it qualify."
+  },
+  {
+    "id": "Q9",
+    "question": "What is the allocation for the Pradhan Mantri Karmachari Suraksha Yojana?",
+    "expected_answer": null,
+    "expected_page": null,
+    "expected_quote": null,
+    "category": "negative",
+    "is_negative": true,
+    "notes": "This scheme does not exist in the PDF. The eval should refuse to answer or state that the scheme is not found in the document."
+  },
+  {
+    "id": "Q10",
+    "question": "What is the allocation for the National AI Mission for Working Class Skilling?",
+    "expected_answer": null,
+    "expected_page": null,
+    "expected_quote": null,
+    "category": "negative",
+    "is_negative": true,
+    "notes": "This scheme does not exist in the PDF. The eval should refuse to answer or state that the scheme is not found in the document."
+  }
+]

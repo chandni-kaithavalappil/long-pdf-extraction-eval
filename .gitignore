@@ -1,0 +1,40 @@
+# macOS / editor cruft
+.DS_Store
+*.swp
+*.swo
+.vscode/
+.idea/
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Local secrets / env
+.env
+.env.*
+*.key
+*.pem
+
+# Large source PDFs (download/place locally)
+pdfs/*.pdf
+
+# Generated pipeline artifacts
+pipeline/data/
+pipeline/data_method3/
+pipeline/output/
+
+# Generated run outputs; dashboard.html embeds current comparison data
+output/
+
+# Logs / temp
+*.log
+tmp/

@@ -1,0 +1,5 @@
+pdf_path: pdfs/budget_2026_27.pdf
+eval_path: eval/ground_truth.json
+output_dir: pipeline/output
+run_name: naive_2026
+openai_model: gpt-5.5
