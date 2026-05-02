@@ -3,7 +3,10 @@
 import json, re, time
 from pathlib import Path
 from util import read_json, write_json, norm, ensure_dirs
-from extract import answer_question
+try:
+    from hybrid_retrieval_flat_chunks.extract import answer_question
+except ImportError:
+    answer_question = None
 import config
 
 def score_one(gt, pred):

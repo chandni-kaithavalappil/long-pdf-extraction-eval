@@ -30,6 +30,8 @@ pdfs/*.pdf
 # Generated pipeline artifacts
 pipeline/data/
 pipeline/data_method3/
+pipeline/data_hybrid_flat_chunks/
+pipeline/data_hierarchical_parent_expansion/
 pipeline/output/
 
 # Generated run outputs; dashboard.html embeds current comparison data

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Method 3: hierarchical retrieval with parent-chunk expansion.
+"""Hierarchical Retrieval with Parent Expansion.
 
 Drop-in replacement for retrieve.py + extract.py for the targeted
 failure mode: top retrieval hits prose about a scheme but miss the sibling
@@ -9,8 +9,8 @@ uses chunk.py metadata (parent_section_id) plus a small page-window fallback.
 import argparse, json, os, re, sys, time
 from pathlib import Path
 
-ROOT = Path(__file__).resolve().parents[1]
-PIPELINE_DIR = Path(__file__).resolve().parent
+ROOT = Path(__file__).resolve().parents[2]
+PIPELINE_DIR = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(PIPELINE_DIR))
 
 import config
@@ -18,7 +18,7 @@ from util import ensure_dirs, read_json, write_json, norm
 from parse import parse_pdf
 from chunk import build_chunks
 from index import build as build_index
-from retrieve import retrieve
+from hybrid_retrieval_flat_chunks.retrieve import retrieve
 import eval as eval_module
 
 REFUSAL={"claims":[], "refusal_reason":"Grounding not found in retrieved parent sections."}
@@ -46,9 +46,9 @@ def apply_runtime(config_path=None, run_name=None):
     cfg=parse_simple_yaml(resolve_path(config_path)) if config_path else {}
     config.PDF_PATH=resolve_path(cfg.get('pdf_path', str(config.PDF_PATH)))
     config.EVAL_PATH=resolve_path(cfg.get('eval_path', str(config.EVAL_PATH)))
-    config.DATA_DIR=PIPELINE_DIR/'data_method3'
+    config.DATA_DIR=PIPELINE_DIR/'data_hierarchical_parent_expansion'
     config.OUTPUT_DIR=ROOT/'output'
-    config.RUN_NAME=run_name or cfg.get('run_name') or 'method3'
+    config.RUN_NAME=run_name or cfg.get('run_name') or 'hierarchical_parent_expansion'
     if cfg.get('openai_model'): config.OPENAI_MODEL=cfg['openai_model']
 
 def numeric_values(text):
@@ -245,7 +245,7 @@ def run_eval():
         sc=score_one(gt,pred)
         results.append({'id':gt['id'],'question':gt['question'],'prediction':pred,'score':sc,'expected_answer':gt.get('expected_answer'),'expected_page':gt.get('expected_page')})
         print(gt['id'], sc)
-    summary={'run_name':config.RUN_NAME,'method':'method3_parent_expansion','ts':time.time(),'n':len(results),'avg_score':round(sum(r['score']['score'] for r in results)/max(1,len(results)),3),'results':results}
+    summary={'run_name':config.RUN_NAME,'method':'hierarchical_retrieval_with_parent_expansion','ts':time.time(),'n':len(results),'avg_score':round(sum(r['score']['score'] for r in results)/max(1,len(results)),3),'results':results}
     out=config.OUTPUT_DIR/f"results_{config.RUN_NAME}.json"
     write_json(out, summary); print('wrote', out)
 
@@ -262,7 +262,7 @@ def main():
     chunks=build_chunks(pages)
     write_json(config.DATA_DIR/'chunks.json', chunks)
     n,backend=build_index()
-    print(f"method3 parsed {manifest['pages']} pages; chunks {len(chunks)}; indexed {n} {backend}")
+    print(f"hierarchical parent expansion parsed {manifest['pages']} pages; chunks {len(chunks)}; indexed {n} {backend}")
     run_eval()
 
 if __name__=='__main__': main()

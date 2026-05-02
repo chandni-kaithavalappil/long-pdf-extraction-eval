@@ -2,7 +2,10 @@
 #!/usr/bin/env python3
 import os, json, re, sys
 from util import norm, write_json
-from retrieve import retrieve
+try:
+    from .retrieve import retrieve
+except ImportError:
+    from retrieve import retrieve
 import config
 
 REFUSAL={"claims":[], "refusal_reason":"Grounding not found in retrieved citations."}

@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-"""Control baseline: dump all PDF text and ask model directly. Same eval shape.
-This intentionally lacks structure-aware chunks/retrieval/citation gates.
-Supports the requested CLI:
-  python pipeline/baseline_naive.py --config configs/budget_2026_27.yaml --run-name naive_2026
+"""Full-Context Dump: dump all PDF text and ask the model directly.
+
+Run from repo root:
+  python3 pipeline/full_context_dump/run.py --config configs/budget_2026_27.yaml --run-name full_context_dump_2026
 """
 import os, json, re, argparse
 from pathlib import Path
+import sys
+PIPELINE_DIR = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(PIPELINE_DIR))
 from util import norm, write_json, read_json, install_hint
 import config
 
@@ -14,7 +17,7 @@ try:
 except Exception:
     install_hint('pypdf')
 
-ROOT = Path(__file__).resolve().parents[1]
+ROOT = Path(__file__).resolve().parents[2]
 
 def parse_simple_yaml(path):
     data = {}
@@ -33,14 +36,14 @@ def resolve_path(value, base=ROOT):
 def load_runtime():
     ap = argparse.ArgumentParser()
     ap.add_argument('--config', help='YAML config with pdf_path/eval_path/output_dir')
-    ap.add_argument('--run-name', help='Output run name, e.g. naive_2026')
+    ap.add_argument('--run-name', help='Output run name, e.g. full_context_dump_2026')
     args = ap.parse_args()
     cfg = parse_simple_yaml(resolve_path(args.config)) if args.config else {}
 
     pdf_path = resolve_path(cfg.get('pdf_path', str(config.PDF_PATH)))
     eval_path = resolve_path(cfg.get('eval_path', str(config.EVAL_PATH)))
     output_dir = resolve_path(cfg.get('output_dir', str(config.OUTPUT_DIR)))
-    run_name = args.run_name or cfg.get('run_name') or ('naive_' + config.RUN_NAME)
+    run_name = args.run_name or cfg.get('run_name') or ('full_context_dump_' + config.RUN_NAME)
     model = cfg.get('openai_model', getattr(config, 'OPENAI_MODEL', 'gpt-5.5'))
     return pdf_path, eval_path, output_dir, run_name, model
 

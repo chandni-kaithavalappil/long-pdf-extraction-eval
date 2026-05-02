@@ -2,11 +2,28 @@
 
 Reference implementation and evaluation dashboard for comparing long-PDF extraction approaches on structured budget PDFs.
 
-Core pieces:
+## Method folders
 
-- `pipeline/` — parsing, chunking, indexing, retrieval, extraction, and eval scripts
-- `pipeline/method3_parent_expansion.py` — hierarchical retrieval with parent expansion
-- `pipeline/method3/README.md` — developer notes for Method 3
+The three evaluated methods are intentionally separated under `pipeline/`:
+
+- `pipeline/full_context_dump/` — Full-Context Dump baseline
+- `pipeline/hybrid_retrieval_flat_chunks/` — Hybrid Retrieval (Flat Chunks)
+- `pipeline/hierarchical_retrieval_parent_expansion/` — Hierarchical Retrieval with Parent Expansion
+
+Each folder has its own `README.md` and runnable `run.py`.
+
+## Shared pipeline modules
+
+The method folders reuse shared components in `pipeline/`:
+
+- `parse.py` — text extraction from PDFs
+- `chunk.py` — chunking and parent-section metadata
+- `index.py` / `bm25.py` — local indexing
+- `eval.py` — scoring helper
+- `config.py` — default configuration
+
+## Other repo contents
+
 - `eval/ground_truth.json` — evaluation questions
 - `dashboard/dashboard.html` — self-contained comparison dashboard
 - `configs/` — example run configs

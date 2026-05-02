@@ -18,7 +18,7 @@ def parent_section_id(page, scheme, current_parent=None):
 
     It intentionally uses existing parse metadata plus the nearest scheme
     heading. This preserves the original parse/chunk behavior while adding
-    enough hierarchy for method3 parent expansion.
+    enough hierarchy for Hierarchical Retrieval with Parent Expansion.
     """
     demand=page.get('demand') or {}
     ministry=page.get('ministry') or ''

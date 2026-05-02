@@ -1,8 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
-cd "$(dirname "$0")"
-python3 -m pip install -q -r requirements.txt
-python3 parse.py
-python3 chunk.py
-python3 index.py
-python3 eval.py
+cd "$(dirname "$0")/.."
+python3 -m pip install -q -r pipeline/requirements.txt
+python3 pipeline/hybrid_retrieval_flat_chunks/run.py \
+  --config configs/budget_2026_27.yaml \
+  --run-name hybrid_retrieval_flat_chunks_2026
