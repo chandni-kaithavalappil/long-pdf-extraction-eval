@@ -27,7 +27,13 @@ Start here for detailed instructions:
 
 ## Dashboard
 
-Open the self-contained dashboard at:
+Public dashboard:
+
+```text
+https://chandni-kaithavalappil.github.io/long-pdf-extraction-eval/dashboard/dashboard.html
+```
+
+Local dashboard:
 
 ```text
 dashboard/dashboard.html
